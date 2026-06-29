@@ -537,7 +537,7 @@ body.loaded #scrollProgress {
     height: clamp(90px, 14vw, 150px);
     border-radius: 20px;
     overflow: hidden;
-    background: #ffffff;  /* ← CHANGED TO WHITE */
+    background: #1a1a1a;  /* ← BACK TO DARK */
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
 }
@@ -547,6 +547,7 @@ body.loaded #scrollProgress {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1.2);  /* ← ADD THIS - 20% ZOOM */
 }
 
 .cat-img::after {
@@ -705,7 +706,7 @@ body.loaded #scrollProgress {
     border-radius: 12px;
     border: 2px solid rgba(139, 26, 26, 0.3);
     overflow: hidden;
-    background: #ffffff;  /* ← CHANGED TO WHITE */
+    background: #1a1a1a;  /* ← BACK TO DARK */
     transition: all 0.3s;
 }
 
