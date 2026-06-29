@@ -537,7 +537,7 @@ body.loaded #scrollProgress {
     height: clamp(90px, 14vw, 150px);
     border-radius: 20px;
     overflow: hidden;
-    background: #1a1a1a;
+    background: #ffffff;  /* ← CHANGED TO WHITE */
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
 }
@@ -705,7 +705,7 @@ body.loaded #scrollProgress {
     border-radius: 12px;
     border: 2px solid rgba(139, 26, 26, 0.3);
     overflow: hidden;
-    background: #1a1a1a;
+    background: #ffffff;  /* ← CHANGED TO WHITE */
     transition: all 0.3s;
 }
 
