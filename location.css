@@ -126,8 +126,8 @@ body.loaded #scrollProgress {
     text-decoration: none;
 }
 .logo-img {
-    width: 55px;
-    height: 55px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -702,8 +702,8 @@ body.loaded #scrollProgress {
         height: 80px;
     }
     .logo-img {
-        width: 45px;
-        height: 45px;
+        width: 65px;
+        height: 65px;
     }
     .logo-text {
         font-size: 1.3rem;
