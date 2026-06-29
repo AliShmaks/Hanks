@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Testimonials - Hanks BBQ</title>
+    <link rel="icon" type="image/png" href="438906440_1427563001210209_8043969711993804774_n.png">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- GSAP for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="testimonials.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader-overlay" id="loader">
+    <div class="loader-container">
+        <div class="loader-logo">
+            <img src="438906440_1427563001210209_8043969711993804774_n.png" alt="Hanks BBQ Logo">
+        </div>
+        <div class="loader-bar"></div>
+    </div>
+</div>
+
+<!-- Scroll Progress Bar -->
+<div id="scrollProgress"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html" class="logo-link">
+        <div class="logo-img">
+            <img src="438906440_1427563001210209_8043969711993804774_n.png" alt="Hanks BBQ Logo">
+        </div>
+    </a>
+    
+    <div class="nav-links">
+        <a href="about.html" class="nav-link">About</a>
+        <div class="dropdown-wrap" id="menuDropdownWrap">
+            <a href="#" class="nav-link dropdown-trigger" id="menuTrigger">
+                Menu <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu" id="menuDropdown">
+                <a href="menu.html?mode=dinein">
+                    <span class="dropdown-icon"><i data-lucide="utensils"></i></span>
+                    Dine In Menu
+                </a>
+                <a href="menu.html?mode=delivery">
+                    <span class="dropdown-icon"><i data-lucide="truck"></i></span>
+                    Delivery Menu
+                </a>
+            </div>
+        </div>
+        <a href="xogame.html" class="nav-link">XO Game</a>
+        <a href="testimonials.html" class="nav-link active">Testimonials</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="location.html" class="nav-link">Location</a>
+        <a href="socials.html" class="nav-link">Socials</a>
+    </div>
+    
+    <div class="nav-actions">
+        <a href="checkout.html" class="cart-btn">
+            <i data-lucide="shopping-bag"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <button class="close-menu" id="closeMenuBtn">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+    <div class="mobile-menu-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <p class="menu-label">Menu</p>
+        <a href="menu.html?mode=dinein"><i data-lucide="utensils"></i> Dine In</a>
+        <a href="menu.html?mode=delivery"><i data-lucide="truck"></i> Delivery</a>
+        <a href="xogame.html">XO Game</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+        <a href="location.html">Location</a>
+        <a href="socials.html">Socials</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Customer <span class="gold-text">Testimonials</span></h1>
+        <p class="hero-subtitle">Don't just take our word for it. See what our customers have to say about Hanks BBQ!</p>
+        <div class="rating-summary">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <span class="rating-number">4.9</span>
+            <span class="rating-count">(500+ reviews)</span>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Grid -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="testimonials-grid">
+            
+            <!-- Testimonial 1 - Ali Shararah -->
+            <div class="testimonial-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="stars-row">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Best BBQ in town! The meat is juicy, the buns are fresh, and the sauce is absolutely addictive. I've been coming here every week since they opened. Ali knows what he's doing!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">
+                        <img src="https://ui-avatars.com/api/?background=8B1A1A&color=fff&name=Ali+Shararah" alt="Ali Shararah">
+                    </div>
+                    <div class="customer-details">
+                        <h4 class="customer-name">Ali Shararah</h4>
+                        <p class="customer-title">Regular Customer ⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+                <div class="verified-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verified Purchase</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="stars-row">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The crispy fries are to die for! And the Smash Combo is the perfect meal. Delivery is always fast and the food arrives hot. Highly recommend!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">
+                        <img src="https://ui-avatars.com/api/?background=8B1A1A&color=fff&name=Sarah+Khoury" alt="Sarah Khoury">
+                    </div>
+                    <div class="customer-details">
+                        <h4 class="customer-name">Sarah Khoury</h4>
+                        <p class="customer-title">Foodie Lover 🍔</p>
+                    </div>
+                </div>
+                <div class="verified-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verified Purchase</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="stars-row">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Finally a BBQ joint that gets it right! The double smashed patty with caramelized onions is pure heaven. Great atmosphere for dine-in too."</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">
+                        <img src="https://ui-avatars.com/api/?background=8B1A1A&color=fff&name=Mike+Haddad" alt="Mike Haddad">
+                    </div>
+                    <div class="customer-details">
+                        <h4 class="customer-name">Mike Haddad</h4>
+                        <p class="customer-title">BBQ Enthusiast 🍔</p>
+                    </div>
+                </div>
+                <div class="verified-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verified Purchase</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="stars-row">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The loaded fries are amazing! Great value for money and the staff is super friendly. My new favorite spot in town."</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">
+                        <img src="https://ui-avatars.com/api/?background=8B1A1A&color=fff&name=Layla+Saab" alt="Layla Saab">
+                    </div>
+                    <div class="customer-details">
+                        <h4 class="customer-name">Layla Saab</h4>
+                        <p class="customer-title">Food Blogger 🍟</p>
+                    </div>
+                </div>
+                <div class="verified-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verified Purchase</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="stars-row">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Best BBQ in Lebanon! The quality is unmatched and the portions are generous. I order from here at least twice a week!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">
+                        <img src="https://ui-avatars.com/api/?background=8B1A1A&color=fff&name=Joe+Bou+Salman" alt="Joe Bou Salman">
+                    </div>
+                    <div class="customer-details">
+                        <h4 class="customer-name">Joe Bou Salman</h4>
+                        <p class="customer-title">Loyal Customer ❤️</p>
+                    </div>
+                </div>
+                <div class="verified-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verified Purchase</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="stars-row">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The delivery is super fast and the food always arrives hot. Their secret sauce is incredible. Definitely my go-to BBQ place!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">
+                        <img src="https://ui-avatars.com/api/?background=8B1A1A&color=fff&name=Rita+Chalhoub" alt="Rita Chalhoub">
+                    </div>
+                    <div class="customer-details">
+                        <h4 class="customer-name">Rita Chalhoub</h4>
+                        <p class="customer-title">Regular Customer ⭐</p>
+                    </div>
+                </div>
+                <div class="verified-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verified Purchase</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-number" data-target="5000">0</div>
+            <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="15000">0</div>
+            <div class="stat-label">Burgers Sold</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="4.9">0</div>
+            <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-label">5-Star Reviews</div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Smash Your Hunger?</h2>
+        <p>Join thousands of satisfied customers and taste the difference!</p>
+        <div class="cta-buttons">
+            <a href="menu.html?mode=dinein" class="cta-btn primary">Order Now</a>
+            <a href="contact.html" class="cta-btn secondary">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-logo">
+                <img src="438906440_1427563001210209_8043969711993804774_n.png" alt="Hanks BBQ Logo">
+            </div>
+            <span class="footer-copyright">© 2026 Hanks BBQ. All rights reserved.</span>
+        </div>
+        <div class="footer-right">
+            <div class="developer-credit">
+                Coded by <a href="https://www.instagram.com/alishararah_/" target="_blank" class="developer-link">Ali Shararah</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="testimonials.js"></script>
+</body>
+</html>

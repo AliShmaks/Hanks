@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <title>Our Menu | Hanks BBQ</title>
+    <meta name="description" content="Explore our delicious menu. Smashed burgers, crispy fries, sandwiches, and more. Made fresh daily.">
+    <meta name="keywords" content="burgers, smashed burgers, fries, sandwiches, Hanks BBQ, burger restaurant">
+    <meta name="author" content="Hanks BBQ">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Our Menu | Hanks BBQ">
+    <meta property="og:description" content="Explore our delicious menu. Smashed burgers, crispy fries, and more.">
+    <meta property="og:image" content="438906440_1427563001210209_8043969711993804774_n.png">
+    <meta property="og:url" content="https://jituraiyan.com/menu.html">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Menu | Hanks BBQ">
+    <meta name="twitter:description" content="Explore our delicious menu.">
+    
+    <link rel="icon" type="image/png" href="438906440_1427563001210209_8043969711993804774_n.png">
+    <link rel="apple-touch-icon" href="438906440_1427563001210209_8043969711993804774_n.png">
+    
+    <!-- Supabase MUST be loaded first -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+<div class="loader-overlay" id="loader">
+    <div class="loader-container">
+        <div class="loader-logo">
+            <img src="438906440_1427563001210209_8043969711993804774_n.png" alt="Hanks BBQ Logo">
+        </div>
+        <div class="loader-bar"></div>
+    </div>
+</div>
+
+<div id="scrollProgress"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html" class="logo-link">
+        <div class="logo-img">
+            <img src="438906440_1427563001210209_8043969711993804774_n.png" alt="Hanks BBQ Logo">
+        </div>
+    </a>
+    
+    <div class="nav-links">
+        <a href="about.html" class="nav-link">About</a>
+        <div class="dropdown-wrap" id="menuDropdownWrap">
+            <a href="#" onclick="event.preventDefault(); toggleMenuDropdown()" class="nav-link dropdown-trigger">
+                Menu <i data-lucide="chevron-down" class="dropdown-arrow" id="ddArrow"></i>
+            </a>
+            <div class="dropdown-menu" id="menuDropdown">
+                <a href="menu.html?mode=dinein">
+                    <span class="dropdown-icon"><i data-lucide="utensils"></i></span>
+                    Dine In Menu
+                </a>
+                <a href="menu.html?mode=delivery">
+                    <span class="dropdown-icon"><i data-lucide="truck"></i></span>
+                    Delivery Menu
+                </a>
+            </div>
+        </div>
+        <a href="xogame.html" class="nav-link">XO Game</a>
+        <a href="testimonials.html" class="nav-link">Testimonials</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="location.html" class="nav-link">Location</a>
+        <a href="socials.html" class="nav-link">Socials</a>
+    </div>
+    
+    <div class="nav-actions">
+        <a href="checkout.html" class="cart-btn">
+            <i data-lucide="shopping-bag"></i>
+            <span class="cart-badge" id="navCartBadge">0</span>
+        </a>
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <button class="close-menu" id="closeMenuBtn">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+    <div class="mobile-menu-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <p class="menu-label">Menu</p>
+        <a href="menu.html?mode=dinein"><i data-lucide="utensils"></i> Dine In</a>
+        <a href="menu.html?mode=delivery"><i data-lucide="truck"></i> Delivery</a>
+        <a href="xogame.html">XO Game</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+        <a href="location.html">Location</a>
+        <a href="socials.html">Socials</a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="page-section">
+    <!-- CATEGORY VIEW -->
+    <div id="catView" class="cat-view">
+        <div class="cat-header-section">
+            <div class="cat-header-content">
+                <h1 class="cat-title" id="menuTitle">Our Menu</h1>
+                <p class="cat-subtitle" id="menuSubtitle">Select a category to explore our delicious offerings</p>
+            </div>
+            <div id="catGrid" class="cat-grid"></div>
+        </div>
+    </div>
+    
+    <!-- PRODUCTS VIEW -->
+    <div id="prodView" style="display:none">
+        <div class="filter-sticky">
+            <div class="filter-container">
+                <div class="filter-wrapper">
+                    <button onclick="scrollCatFilter(-200)" class="filter-scroll-btn">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </button>
+                    <div class="filter-scroll" id="catFilter"></div>
+                    <button onclick="scrollCatFilter(200)" class="filter-scroll-btn">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="products-section">
+            <div class="products-container">
+                <div class="view-toggle">
+                    <button class="toggle-btn active" id="gridViewBtn" onclick="setView('grid')">
+                        <i data-lucide="grid-2x2"></i>
+                    </button>
+                    <button class="toggle-btn" id="listViewBtn" onclick="setView('list')">
+                        <i data-lucide="list"></i>
+                    </button>
+                </div>
+                <h1 class="products-title" id="productsPageTitle"></h1>
+                <div class="products-title-underline"></div>
+                
+                <div id="prodGrid" class="products-grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-logo">
+                <img src="438906440_1427563001210209_8043969711993804774_n.png" alt="Hanks BBQ Logo">
+            </div>
+            <span class="footer-copyright">© 2026 Hanks BBQ. All rights reserved.</span>
+        </div>
+        <div class="footer-right">
+            <span class="developer-credit">
+                Coded by <a href="https://www.instagram.com/alishararah_/" target="_blank" class="developer-link">Ali Shararah</a>
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- Detail Page -->
+<div class="detail-page" id="detailPage">
+    <button class="detail-back" onclick="closeDetail()">
+        <i data-lucide="arrow-left"></i>
+    </button>
+    
+    <div class="detail-scroll">
+        <div class="detail-hero" id="detailHero"></div>
+        <div class="detail-body">
+            <div class="detail-head">
+                <h1 id="detailName"></h1>
+                <span class="price" id="detailPrice"></span>
+            </div>
+            <div id="detailBadges" class="badge-group"></div>
+            <p class="desc" id="detailDesc"></p>
+        </div>
+    </div>
+    
+    <div class="detail-footer" id="detailFooter"></div>
+</div>
+    
+<div class="toast" id="toast"></div>
+
+<script src="menu.js"></script>
+</body>
+</html>
