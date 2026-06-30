@@ -21,6 +21,8 @@ function forceHideLoader() {
         setTimeout(() => {
             loader.style.display = 'none'
             document.body.classList.add('loaded')
+            // ❌ REMOVE THIS LINE
+            // triggerCategoryAnimations(); 
         }, 500)
     }
 }
@@ -38,29 +40,49 @@ function showLoader() {
 function hideLoader() {
     const elapsed = Date.now() - loaderStartTime
     const remaining = Math.max(0, 900 - elapsed)
-    if (remaining > 0) {
-        setTimeout(() => {
-            const loader = document.getElementById('loader')
-            if (loader) {
-                loader.classList.add('fade-out')
-                setTimeout(() => {
-                    loader.style.display = 'none'
-                    document.body.classList.add('loaded')
-                }, 500)
-            }
-        }, remaining)
-    } else {
+    
+    const hideLoaderAndAnimate = () => {
         const loader = document.getElementById('loader')
         if (loader) {
             loader.classList.add('fade-out')
             setTimeout(() => {
                 loader.style.display = 'none'
                 document.body.classList.add('loaded')
+                triggerCategoryAnimations(); // 🆕 ADD THIS
             }, 500)
         }
     }
+    
+    if (remaining > 0) {
+        setTimeout(hideLoaderAndAnimate, remaining)
+    } else {
+        hideLoaderAndAnimate()
+    }
 }
 
+// 🆕 ADD THIS NEW FUNCTION - Put it right after hideLoader()
+function triggerCategoryAnimations() {
+    const cards = document.querySelectorAll('.cat-card');
+    if (cards.length === 0) return;
+    
+    // Reset animations
+    cards.forEach((card) => {
+        card.style.animation = 'none';
+        card.style.opacity = '0';
+        card.style.transform = 'scale(1.3)';
+    });
+    
+    // Force reflow
+    void document.body.offsetHeight;
+    
+    // ALL cards animate at the SAME time - NO stagger
+    cards.forEach((card) => {
+        card.style.animation = `categoryZoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards`;
+        card.style.animationDelay = '0s'; // ← ALL AT ONCE
+    });
+}
+
+// Keep this at the bottom of LOADER FUNCTIONS
 setTimeout(forceHideLoader, 3000)
 
 // ========== SCROLL PROGRESS ==========
@@ -479,7 +501,6 @@ window.backToCategories = function() {
     hideLoader()
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
-
 window.addEventListener('popstate', function(event) {
     const params = new URLSearchParams(window.location.search)
     const categoryFromURL = params.get('cat')
@@ -636,12 +657,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (typeof lucide !== 'undefined') lucide.createIcons()
     updateCartUI()
     
-    // FORCE GRID VIEW - remove saved preference
-    localStorage.setItem('menu_view', 'grid');
-    currentView = 'grid';
+    setTimeout(function() {
+        setView(currentView);
+    }, 100);
     
     const urlParams = new URLSearchParams(window.location.search)
-    // ... rest of code continues normally
     menuMode = urlParams.get('mode') || 'dinein'
     
     const title = document.getElementById('menuTitle')
