@@ -494,7 +494,7 @@ body.loaded #scrollProgress {
 .info-icon {
     width: 55px;
     height: 55px;
-    background: rgba(139, 26, 26, 0.1);
+    background: rgb(0 0 0 / 0%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -510,7 +510,7 @@ body.loaded #scrollProgress {
 
 .info-icon .fab {
     font-size: 24px;
-    color: #8B1A1A;
+    color: #0dff00;
 }
 
 .info-content {
