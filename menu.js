@@ -273,23 +273,18 @@ function showToast(msg) {
 }
 
 function setView(view) {
-    currentView = view;
-    localStorage.setItem('menu_view', view);
-    
-    const gridBtn = document.getElementById('gridViewBtn');
-    const listBtn = document.getElementById('listViewBtn');
-    if (gridBtn) gridBtn.classList.toggle('active', view === 'grid');
-    if (listBtn) listBtn.classList.toggle('active', view === 'list');
+    // Force grid view only
+    currentView = 'grid';
+    localStorage.setItem('menu_view', 'grid');
     
     const grid = document.getElementById('prodGrid');
     if (grid) {
         grid.classList.remove('view-grid', 'view-list');
-        grid.classList.add('view-' + view);
+        grid.classList.add('view-grid');
     }
     
     renderProducts();
 }
-
 // ========== MENU FUNCTIONS ==========
 function showCatView() {
     selectedCat = null
@@ -641,11 +636,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (typeof lucide !== 'undefined') lucide.createIcons()
     updateCartUI()
     
-    setTimeout(function() {
-        setView(currentView);
-    }, 100);
+    // FORCE GRID VIEW - remove saved preference
+    localStorage.setItem('menu_view', 'grid');
+    currentView = 'grid';
     
     const urlParams = new URLSearchParams(window.location.search)
+    // ... rest of code continues normally
     menuMode = urlParams.get('mode') || 'dinein'
     
     const title = document.getElementById('menuTitle')
