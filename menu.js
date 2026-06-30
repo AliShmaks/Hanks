@@ -395,13 +395,13 @@ function renderProducts() {
                 </div>
                 <div class="mc-info">
                     <h3>${item.name}</h3>
+                    <span class="price">$${item.price.toFixed(2)}</span>
                     ${item.ingredients ? `<p class="desc">${item.ingredients}</p>` : ''}
                     <div class="badge-group">
                         ${item.has_fries ? '<span class="badge-fries">🍟 Fries</span>' : ''}
                         ${item.is_spicy ? '<span class="badge-spicy">🌶️ Spicy</span>' : ''}
                     </div>
                     <div class="mc-bottom">
-                        <span class="price">$${item.price.toFixed(2)}</span>
                         ${actionHtml ? `<div class="mc-action" data-key="${key}">${actionHtml}</div>` : ''}
                     </div>
                 </div>
