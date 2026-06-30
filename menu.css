@@ -833,7 +833,7 @@ body.loaded #scrollProgress {
 .menu-card {
     background: #1a1a1a;
     border: 1px solid rgba(139, 26, 26, 0.15);
-    border-radius: 20px;
+    border-radius: 35px;
     overflow: hidden;
     transition: all 0.3s ease;
     display: flex;
@@ -851,7 +851,7 @@ body.loaded #scrollProgress {
     width: 100%;
     height: 200px;
     overflow: hidden;
-    background: #ffffff;  /* ← CHANGE FROM #0d0d0d TO WHITE */
+    background: #ffffff;
 }
 
 .mc-img img {
@@ -879,51 +879,60 @@ body.loaded #scrollProgress {
     letter-spacing: 0.5px;
 }
 
-/* NEW — replace with */
 .mc-info {
     padding: 18px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, 
+        #131313 0%,
+        #1a0a0a 25%,
+        #3a0a0a 50%,
+        #5a1010 75%,
+        #8B1A1A 100%
+    );
 }
 
 .mc-bottom {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     margin-top: auto;
 }
 
 .mc-action {
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-card h3 {
     font-size: 1.2rem;
     font-weight: 800;
     color: #fff;
-    margin-bottom: 8px;
     letter-spacing: -0.3px;
 }
 
 .price {
-    color: #ffc300;
+    color: #ffcb00;
     font-weight: 800;
     font-size: 1.25rem;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .desc {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    color: rgb(255, 255, 255);
     line-height: 1.5;
-    margin: 12px 0;
+    margin: 6px 0;
 }
 
 .badge-group {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 12px 0;
+    margin: 8px 0;
 }
 
 .badge-fries {
@@ -942,9 +951,9 @@ body.loaded #scrollProgress {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #ff5555;
+    color: #ffffff;
     background: rgba(255, 85, 85, 0.12);
     padding: 4px 10px;
     border-radius: 30px;
@@ -952,10 +961,11 @@ body.loaded #scrollProgress {
 
 .atc-btn {
     width: 100%;
-    padding: 12px;
+    max-width: 200px;
+    padding: 12px 24px;
     border-radius: 40px;
-    background: #8B1A1A;
-    color: #ffffff;
+    background: #ffcb00;
+    color: #000000;
     font-size: 0.8rem;
     font-weight: 800;
     cursor: pointer;
@@ -967,7 +977,7 @@ body.loaded #scrollProgress {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: auto;
+    margin: 0 auto;
 }
 
 .atc-btn:hover {
@@ -984,7 +994,7 @@ body.loaded #scrollProgress {
     }
 }
 
-/* Mobile — Horizontal Cards */
+/* Mobile */
 @media (max-width: 550px) {
     .products-grid {
         grid-template-columns: 1fr;
@@ -993,102 +1003,114 @@ body.loaded #scrollProgress {
     }
 
     .menu-card {
-        flex-direction: row;
-        border-radius: 14px;
+        flex-direction: column;
+        border-radius: 35px;
     }
 
     .mc-img {
-        width: 115px;
-        height: auto;
-        min-height: 140px;
+        width: 100%;
+        height: 190px;
+        border-radius: 14px 14px 0 0;
         flex-shrink: 0;
-        border-radius: 14px 0 0 14px;
     }
 
     .mc-img img {
         height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 
     .mc-info {
-        padding: 12px 14px;
+        padding: 16px 18px;
+        background: linear-gradient(to bottom, 
+            #131313 0%,
+            #1a0a0a 25%,
+            #3a0a0a 50%,
+            #5a1010 75%,
+            #8B1A1A 100%
+        );
     }
 
     .menu-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .price {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+        display: block;
     }
 
     .desc {
-        font-size: 0.72rem;
-        margin: 4px 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        line-height: 1.4;
+        font-size: 0.95rem;
+        margin: 8px 0;
+        line-height: 1.5;
+        display: block;
+        -webkit-line-clamp: unset;
     }
 
     .badge-group {
-        margin: 4px 0;
-        gap: 6px;
+        margin: 8px 0;
+        gap: 8px;
     }
 
     .badge-fries,
     .badge-spicy {
-        font-size: 0.6rem;
-        padding: 3px 8px;
+        font-size: 0.95rem;
+        padding: 4px 10px;
     }
 
     .mc-bottom {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        margin-top: 8px;
+        gap: 12px;
+        margin-top: 10px;
     }
 
-    .price {
-        font-size: 1.05rem;
+    .mc-action {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 
     .atc-btn {
-        width: auto;
-        padding: 8px 18px;
-        font-size: 0.7rem;
-        letter-spacing: 0.5px;
+        width: 100%;
+        max-width: 200px;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+        margin: 0 auto;
     }
 
     .badge-bs {
-        font-size: 0.55rem;
-        padding: 3px 8px;
-        top: 8px;
-        right: auto;
-        left: 8px;
+        font-size: 0.6rem;
+        padding: 4px 10px;
+        top: 10px;
+        right: 10px;
+        left: auto;
     }
 
-    /* Compact quantity selector for horizontal cards */
     .quantity-selector-container {
         margin-top: 0;
     }
 
     .quantity-selector {
-        padding: 3px;
-        gap: 4px;
+        padding: 4px;
+        gap: 8px;
     }
 
     .quantity-selector .qty-minus,
     .quantity-selector .qty-plus {
-        width: 28px;
-        height: 28px;
-        font-size: 16px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
     }
 
     .quantity-selector .qty-number {
-        font-size: 14px;
-        min-width: 28px;
+        font-size: 16px;
+        min-width: 32px;
     }
 }
 
@@ -1188,8 +1210,8 @@ body.loaded #scrollProgress {
     }
     
     .logo-img {
-        width: 70px;
-        height: 70px;
+        width: 100px;
+        height: 100px;
     }
     
     .logo-text {
@@ -1377,9 +1399,9 @@ body.loaded #scrollProgress {
 
 .quantity-selector .qty-minus,
 .quantity-selector .qty-plus {
-    background: #8B1A1A;
+    background: #ffcb00;
     border: none;
-    color: #ffffff;
+    color: #000000;
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -1636,7 +1658,7 @@ body.loaded #scrollProgress {
 .products-grid.view-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 56px;
+    gap: 3em clamp(2rem, 5vw, 5rem);
     max-width: 1150px;
     margin: 0 auto;
 }
@@ -1694,7 +1716,6 @@ body.loaded #scrollProgress {
 
 .products-grid.view-list .menu-card h3 {
     font-size: 1rem;
-    margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1717,7 +1738,7 @@ body.loaded #scrollProgress {
 
 .products-grid.view-list .badge-fries,
 .products-grid.view-list .badge-spicy {
-    font-size: 0.6rem;
+    font-size: 0.95rem;
     padding: 3px 8px;
 }
 
@@ -1779,7 +1800,7 @@ body.loaded #scrollProgress {
 @media (max-width: 550px) {
     .products-grid.view-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 3em clamp(2rem, 5vw, 5rem);
         max-width: 100%;
     }
     
@@ -1789,7 +1810,7 @@ body.loaded #scrollProgress {
     
     .products-grid.view-grid .mc-img {
         width: 100%;
-        height: 250px;
+        height: 190px;
         border-radius: 14px 14px 0 0;
     }
     
@@ -1809,5 +1830,17 @@ body.loaded #scrollProgress {
 @media (min-width: 901px) {
     .view-toggle {
         display: none !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .products-grid.view-grid {
+        grid-template-columns: 320px !important;  /* Fixed width for all cards */
+        justify-content: center !important;
+        gap: 25px !important;
+    }
+    
+    .products-grid.view-grid .menu-card {
+        width: 100% !important;  /* Fills the 300px column */
     }
 }
