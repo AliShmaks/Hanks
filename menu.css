@@ -537,7 +537,7 @@ body.loaded #scrollProgress {
     height: clamp(90px, 14vw, 150px);
     border-radius: 20px;
     overflow: hidden;
-    background: #1a1a1a;  /* ← BACK TO DARK */
+    background: #ffffff;  /* ← BACK TO DARK */
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
 }
@@ -566,17 +566,16 @@ body.loaded #scrollProgress {
 .cat-card:hover .cat-img::after {
     opacity: 1;
 }
-
 /* ==============================================
-   CATEGORY NAME - CLEAN & PROFESSIONAL
+   CATEGORY NAME - SHINY SHADOW EFFECT (ALWAYS)
    ============================================== */
 .cat-name {
     width: 100%;
-    font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     white-space: nowrap;
     background: transparent;
@@ -585,6 +584,12 @@ body.loaded #scrollProgress {
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
+    /* SHINY SHADOW - ALWAYS VISIBLE */
+    text-shadow: 
+        0 0 10px rgba(255, 203, 0, 0.3),
+        0 0 20px rgba(255, 203, 0, 0.15),
+        0 0 40px rgba(255, 203, 0, 0.08),
+        0 0 80px rgba(255, 203, 0, 0.04);
 }
 
 /* Clean underline effect on hover */
@@ -595,18 +600,25 @@ body.loaded #scrollProgress {
     left: 50%;
     width: 0;
     height: 2px;
-    background: #8B1A1A;
+    background: #ffcb00;
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
 
 .cat-card:hover .cat-name {
-    color: #8B1A1A;
+    color: #ffcb00;
     letter-spacing: 0.12em;
+    /* STRONGER SHINE ON HOVER */
+    text-shadow: 
+        0 0 15px rgba(255, 203, 0, 0.5),
+        0 0 30px rgba(255, 203, 0, 0.3),
+        0 0 60px rgba(255, 203, 0, 0.15),
+        0 0 100px rgba(255, 203, 0, 0.08);
 }
 
 .cat-card:hover .cat-name::after {
     width: 40%;
+    background: #ffcb00;
 }
 
 /* ==============================================
@@ -1327,13 +1339,13 @@ body.loaded #scrollProgress {
     }
     
     .cat-img {
-        width: 100px !important;
+        width: 8.5rem !important;
         height: 100px !important;
     }
     
     .cat-name {
-        width: 100px !important;
-        font-size: 0.7rem !important;
+        width: 8.5rem !important;
+        font-size: 1rem !important;
     }
     
     .toast {
